@@ -38,4 +38,19 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  config.action_mailer.default_url_options = { host: "https://blocipedia-sharadalt.c9users.io" }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {:address => "https://blocipedia-sharadalt.c9users.io", :port => 1025}
+
+  config.action_mailer.smtp_settings = {
+  :user_name => Figaro.env.user_name,
+  :password => Figaro.env.password,
+  :domain => 'example.com',
+  :address => 'smtp.gmail.com',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
+  
 end

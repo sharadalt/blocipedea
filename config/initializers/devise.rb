@@ -6,13 +6,13 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  config.secret_key = '6fac83e00a97146fc3f098cbaffdd60758a0912e4dbb3d726e29cf0fc72689a594e9a102005ba0ee647093b24ec425a23f1703aa42ce2dfc15e8d8de4b459fc5'
-
+  config.secret_key = '6fac83e00a97146fc3f098cbaffdd60758#a0912e4dbb3d726e29cf0fc72689a594e9a102005ba0ee647093b24ec425a23f1703aa42ce2dfc15e8d8de4b459fc5'
+  #config.secret_key = '6fac83abca97146fc3f098cbaffdd60758#a0912e4dbb3d726e29cf0fc72689a594e9a102005ba0ee647093b24ec425a23f1703aa42ce2dfc15e8d8de4b459fc5'
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'blocipedia@example.com'
+  config.mailer_sender = 'blocipedea@example.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -215,7 +215,7 @@ Devise.setup do |config|
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
-  # config.default_scope = :user
+  config.default_scope = :user
 
   # Set this configuration to false if you want /users/sign_out to sign out
   # only the current scope. By default, Devise signs out all scopes.
@@ -230,7 +230,7 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-  # config.navigational_formats = ['*/*', :html]
+  config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete

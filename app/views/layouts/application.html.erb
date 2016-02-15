@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workspace</title>
+  <title>Blocipedia</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <div class="pull-right user-info">
+        <br>
+        <P ALIGN="center">
+            <% if user_signed_in? %>
+              <%= current_user.name %> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+            <% else %>
+              <%= link_to "Sign In", new_user_session_path %>
+            <% end %>
+        </P>
+      </div>
+    </ul>
 
-<%= yield %>
-
+   <%#= yield %>
 </body>
 
 <div class="container">
@@ -24,7 +36,7 @@
 
 <div class="container">
     <h1><%= yield :header %></h1>
-  <%#= yield %>
+  <%= yield %>
 </div>
 
 </html>

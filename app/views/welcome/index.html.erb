@@ -7,23 +7,21 @@
   </CENTER>
   <div class="jumbotron">
     <div class="container">
-      <div class="boxed">
+      <div class="boxed border-medium">
         <h3>Create and Share Markdown Wikis</h3>
           <h3>
             <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
           </h3>
         </div>
-          <CENTER>
-            <section> 
+            <section class="border-medium"> 
                 Create as many public <br> 
                 wikis as you want <br>
-                <%= link_to "Free Plan", new_user_session_path %>
+                <%= link_to "Free Plan", new_user_session_path, class: 'btn btn-primary btn-sm' %>
             </section>
-            <div class="posts">
-                Create private Wikis
-              <%= link_to "Premier Plan", new_user_registration_path %> 
+            <div class="posts border-medium">
+                Create private Wikis <br>
+              <%= link_to "Premier Plan", new_user_registration_path, class: 'btn btn-primary btn-sm' %> 
             </div>
-          </CENTER>
     </div>
   </div>
 <% end %>

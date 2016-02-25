@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
   
   before_action :configure_permitted_parameters, if: :devise_controller?
   
+  def after_sign_in_path_for(user)
+    #flash[:notice] = 'Welcome! Please follow the steps!'
+    wikis_path
+  end
+ 
   protected
 
   def configure_permitted_parameters

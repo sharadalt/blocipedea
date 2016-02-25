@@ -2,26 +2,24 @@
 
 
 <% content_for :top_content do %>
-  <CENTER>
-    <h2>Blocipedia: Social, Markdown Wikis</h2>
-  </CENTER>
+<h2>Blocipedia: Social, Markdown Wikis</h2>
   <div class="jumbotron">
     <div class="container">
       <div class="boxed border-medium">
         <h3>Create and Share Markdown Wikis</h3>
-          <h3>
-            <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
-          </h3>
-        </div>
-            <section class="border-medium"> 
-                Create as many public <br> 
-                wikis as you want <br>
-                <%= link_to "Free Plan", new_user_session_path, class: 'btn btn-primary btn-sm' %>
-            </section>
-            <div class="posts border-medium">
-                Create private Wikis <br>
-              <%= link_to "Premier Plan", new_user_registration_path, class: 'btn btn-primary btn-sm' %> 
-            </div>
+            <h3>
+              <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-md' %>
+            </h3>
+      </div>
+      <section class="border-medium"> 
+        Create as many public <br> 
+        wikis as you want <br>
+        <%= link_to "Free Plan", new_user_session_path, class: 'btn btn-primary btn-sm' %>
+      </section>
+      <div class="posts border-medium">
+        Create private Wikis <br>
+        <%= link_to "Premier Plan", new_user_registration_path, class: 'btn btn-primary btn-sm' %> 
+      </div>
     </div>
   </div>
 <% end %>

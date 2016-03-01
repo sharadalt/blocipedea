@@ -17,7 +17,6 @@ class WikisController < ApplicationController
     @user = current_user
     @wikis = @user.wikis
     @wiki = @wikis.find(params[:id])
-    #redirect_to user_wiki_path
   end
   
   def new
@@ -49,12 +48,10 @@ class WikisController < ApplicationController
   end
 
   def edit
-     #@user = current_user
-     @user = User.find(params[:user_id])
+     @user = current_user
+     #@user = User.find(params[:user_id])
      @wikis = @user.wikis
      @wiki = @wikis.find(params[:id])
-     p "*************"
-     p @wiki
      #render edit_user_wiki_path
   end
   
@@ -63,7 +60,7 @@ class WikisController < ApplicationController
     #@user = User.find(params[:id])
     @wikis = @user.wikis
     @wiki = @wikis.find(params[:id])
-    p @wiki
+    #p @wiki
     @wiki.title = params[:wiki][:title]
     @wiki.body  = params[:wiki][:body]
     @wiki.private = params[:wiki][:private]
@@ -79,11 +76,14 @@ class WikisController < ApplicationController
   end
   
   def destroy
+    
+    @user = current_user
     @wiki = Wiki.find(params[:id])
+
  
     if @wiki.destroy
       flash[:notice] = "wiki was deleted successfully."
-        redirect_to user_wikis_path
+        redirect_to wikis_path
     else
       flash[:error] = "There was an error deleting the wiki."
       render :user_wikis_path

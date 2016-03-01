@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   
   def after_sign_in_path_for(user)
     #flash[:notice] = 'Welcome! Please follow the steps!'
-    wikis_path
+    user_wikis_path(user)
   end
  
   protected

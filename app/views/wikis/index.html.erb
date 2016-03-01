@@ -1,17 +1,5 @@
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-table, th, td {
-    border: 1px solid blue;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 5px;
-    width: 500px;
-}
-</style>
-</head>
 <body>
 <ul class="nav navbar-nav pull-left">
 <%= @user.name %>
@@ -22,10 +10,10 @@ th, td {
     <th>Wiki(click link to edit) </th>
     <th>Wiki(click link to delete) </th>
   </tr>
-<% @wikis.each do |wiki| %>
+<% @user.wikis.each do |wiki| %>
   <tr>
-    <td><%= link_to wiki.title, edit_wiki_path(wiki), class: 'btn btn-success' %></td>
-    <td><%= link_to "complete", [wiki], method: :delete %></td>
+    <td><%= link_to wiki.title, edit_user_wiki_path(@user,wiki), class: 'btn btn-success' %></td>
+    <td><%= link_to "delete", [wiki], method: :delete %></td>
   </tr>
 <% end %>
   </div>
@@ -35,7 +23,6 @@ th, td {
 <div class="row">
   <div class="col-md-4">
     <%= render partial: 'form', locals: {wiki: @wiki} %>
-    <%#= link_to "New", new_wiki_path(current_user, @wiki), class: 'btn btn-success' %>
   </div>
 </div>
 </ul>

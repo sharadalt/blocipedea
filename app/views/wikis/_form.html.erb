@@ -1,5 +1,5 @@
-<%= form_for [wiki] do |f| %>
-  <% if @wiki.errors.any? %>
+<%= form_for [@user,@wiki] do |f| %>
+  <% if wiki.errors.any? %>
     <div class="alert alert-danger">
       <h4><%= pluralize(wiki.errors.count, "error") %>.</h4>
       <ul>
@@ -9,7 +9,7 @@
       </ul>
     </div>
   <% end %>
-  <%= form_group_tag(@wiki.errors[:title]) do %>
+  <%= form_group_tag(wiki.errors[:title]) do %>
      <%= f.label :title %>
      <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
   <% end %>

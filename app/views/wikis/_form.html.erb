@@ -15,13 +15,9 @@
   <% end %>
   <%= form_group_tag(@wiki.errors[:description]) do %>
     <%= f.label :body %>
-    <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki description" %>
+    <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
   <% end %>
-  <div class="form-group">
-    <%= f.label :private, class: 'checkbox' do %>
-    <%= f.check_box :private %> Private wiki
-    <% end %>
-  </div>
+
    <div class="form-group">
      <%= f.submit "Save", class: 'btn btn-success' %>
    </div>

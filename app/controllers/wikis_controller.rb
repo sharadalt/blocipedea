@@ -3,14 +3,14 @@ class WikisController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @user = current_user
-    @wikis = @user.wikis
+    #@user = current_user
+    #@wikis = @user.wikis
     # @wiki = @wikis.new
+    @wikis = Wiki.all
     
     @wiki = Wiki.new
     # @wiki.user = @user
     # @wikis << @wiki
-    p @wiki
   end
   
   def show
@@ -35,7 +35,8 @@ class WikisController < ApplicationController
     @wiki = @wikis.new
     @wiki.title = params[:wiki][:title]
     @wiki.body  = params[:wiki][:body]
-    @wiki.private = params[:wiki][:private]
+    #@wiki.private = params[:wiki][:private]
+    @wiki.private = false
     @wiki.user = @user
     
     if @wiki.save
@@ -48,19 +49,22 @@ class WikisController < ApplicationController
   end
 
   def edit
-     @user = current_user
+     #@user = current_user
      #@user = User.find(params[:user_id])
-     @wikis = @user.wikis
-     @wiki = @wikis.find(params[:id])
-     #render edit_user_wiki_path
+     #@wikis = @user.wikis
+     #@wiki = @wikis.find(params[:id])
+     @wikis = Wiki.all
+     @wiki = Wiki.find(params[:id])
   end
   
   def update
-    @user = current_user
+    #@user = current_user
     #@user = User.find(params[:id])
-    @wikis = @user.wikis
-    @wiki = @wikis.find(params[:id])
+    #@wikis = @user.wikis
+    #@wiki = @wikis.find(params[:id])
     #p @wiki
+    @wikis = Wiki.all
+    @wiki = @wikis.find(params[:id])
     @wiki.title = params[:wiki][:title]
     @wiki.body  = params[:wiki][:body]
     @wiki.private = params[:wiki][:private]
@@ -68,7 +72,7 @@ class WikisController < ApplicationController
     
      if @wiki.save
        flash[:notice] = "Wiki was updated."
-       redirect_to user_wikis_path
+       redirect_to wikis_path
      else
        flash[:error] = "There was an error saving the Wiki. Please try again."
        render :edit
@@ -77,16 +81,21 @@ class WikisController < ApplicationController
   
   def destroy
     
-    @user = current_user
+    #@user = current_user
     @wiki = Wiki.find(params[:id])
 
- 
-    if @wiki.destroy
-      flash[:notice] = "wiki was deleted successfully."
-        redirect_to wikis_path
+    if @wiki.user == current_user
+      
+      if @wiki.destroy
+        flash[:notice] = "wiki was deleted successfully."
+          redirect_to wikis_path
+      else
+        flash[:error] = "There was an error deleting the wiki."
+        render :wikis_path
+      end
     else
-      flash[:error] = "There was an error deleting the wiki."
-      render :user_wikis_path
+      flash[:error] = "The owner has to delete it"
+      redirect_to wikis_path
     end
   end
    

@@ -2,7 +2,7 @@
 <html>
 <body>
 <ul class="nav navbar-nav pull-left">
-<%= @user.name %>
+<%#= @user.name %>
 <br>
 <h4>My Wikis</h4>
 <table style="width:70%">
@@ -10,14 +10,12 @@
     <th>Wiki(click link to edit) </th>
     <th>Wiki(click link to delete) </th>
   </tr>
-<% @user.wikis.each do |wiki| %>
-  <tr>
-    <td><%= link_to wiki.title, edit_user_wiki_path(@user,wiki), class: 'btn btn-success' %></td>
-    <td><%= link_to "delete", [wiki], method: :delete %></td>
-  </tr>
-<% end %>
-  </div>
-</div>
+  <% @wikis.each do |wiki| %>
+    <tr>
+      <td><%= link_to wiki.title, edit_wiki_path(wiki), class: 'btn btn-success' %></td>
+      <td><%= link_to "delete", [wiki], method: :delete %></td>
+    </tr>
+  <% end %>
 </table>
 <h4>Create New Wiki</h4>
 <div class="row">

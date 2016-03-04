@@ -5,4 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   
   has_many :wikis, :dependent => :destroy
+  enum role: [:admin, :standard, :premium]
+  before_save { self.role ||= :standard }
+ 
 end

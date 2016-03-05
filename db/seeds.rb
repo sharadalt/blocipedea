@@ -1,16 +1,26 @@
+require 'random_data'
+
 User.destroy_all
 
-User.create!(
+user1 = User.create!(
   name: 'user1',
   email: 'user1@example.com',
   password: 'hello123',
+  password_confirmation: 'hello123'
 )
 
-User.create!(
+user1.skip_confirmation!
+user1.save
+
+user2 = User.create!(
   name: "user2",
   email: "user2@example.com",
-  password: "hello123"
+  password: "hello123",
+  password_confirmation: 'hello123'
 )
+
+user2.skip_confirmation!
+user2.save
 
 users = User.all
 

@@ -7,12 +7,8 @@ class ApplicationPolicy
     @record = record
   end
   
-  def is_base?
-    @user.role? :base
-  end
-
   def index?
-    is_base?
+    user.present?
   end
 
 end

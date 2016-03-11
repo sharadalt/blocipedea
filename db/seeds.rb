@@ -5,19 +5,20 @@ User.destroy_all
 user1 = User.create!(
   name: 'user1',
   email: 'user1@example.com',
-  password: 'hello123',
+  password: 'hello123', 
   password_confirmation: 'hello123'
 )
+
+user2 = User.create!(
+  name: 'user2',
+  email: 'user2@example.com',
+  password: 'hello123', 
+  password_confirmation: 'hello123'
+)
+
 
 user1.skip_confirmation!
 user1.save
-
-user2 = User.create!(
-  name: "user2",
-  email: "user2@example.com",
-  password: "hello123",
-  password_confirmation: 'hello123'
-)
 
 user2.skip_confirmation!
 user2.save
@@ -33,6 +34,7 @@ users = User.all
         user: users.sample
 )
 end
+
 wikis = Wiki.all
 
 puts "Seed finished"

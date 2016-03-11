@@ -1,22 +1,20 @@
 class WikisController < ApplicationController
-  #before_action :require_sign_in
+  
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
+  
   before_action :authenticate_user!
   
   def index
-    #@user = current_user
-    #@wikis = @user.wikis
-    # @wiki = @wikis.new
     @wikis = Wiki.all
-    
+    @wikis = policy_scope(Wiki)
     @wiki = Wiki.new
-    # @wiki.user = @user
-    # @wikis << @wiki
+    authorize @wiki
   end
   
   def show
-    @user = current_user
-    @wikis = @user.wikis
-    @wiki = @wikis.find(params[:id])
+    @wiki = Wiki.find(params[:id])
+    authorize @wiki
   end
   
   def new
@@ -27,17 +25,14 @@ class WikisController < ApplicationController
   end
 
   def create
-    
     @user = current_user
     @wikis = @user.wikis
-    #@wiki = Wiki.new(wiki_params)
-    #@wiki = Wiki.new
     @wiki = @wikis.new
     @wiki.title = params[:wiki][:title]
     @wiki.body  = params[:wiki][:body]
-    #@wiki.private = params[:wiki][:private]
     @wiki.private = false
     @wiki.user = @user
+    authorize @wiki
     
     if @wiki.save
       flash[:notice] = "Wiki  was saved."
@@ -49,22 +44,15 @@ class WikisController < ApplicationController
   end
 
   def edit
-     #@user = current_user
-     #@user = User.find(params[:user_id])
-     #@wikis = @user.wikis
-     #@wiki = @wikis.find(params[:id])
-     @wikis = Wiki.all
-     @wiki = Wiki.find(params[:id])
+    @wikis = Wiki.all
+    @wiki = Wiki.find(params[:id])
+    authorize @wiki
   end
   
   def update
-    #@user = current_user
-    #@user = User.find(params[:id])
-    #@wikis = @user.wikis
-    #@wiki = @wikis.find(params[:id])
-    #p @wiki
     @wikis = Wiki.all
     @wiki = @wikis.find(params[:id])
+    authorize @wiki
     @wiki.title = params[:wiki][:title]
     @wiki.body  = params[:wiki][:body]
     @wiki.private = params[:wiki][:private]
@@ -80,12 +68,10 @@ class WikisController < ApplicationController
   end
   
   def destroy
-    
-    #@user = current_user
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
 
     if @wiki.user == current_user
-      
       if @wiki.destroy
         flash[:notice] = "wiki was deleted successfully."
           redirect_to wikis_path

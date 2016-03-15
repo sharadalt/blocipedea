@@ -2,6 +2,37 @@
 <h1>Edit wiki </h1>
 <div class = "row">
    <div class = "col-md-8">
-       <%= render partial: 'form', locals: {wiki: @wiki} %>
+      <%= form_for [@user,@wiki] do |f| %>
+         <% if @wiki.errors.any? %>
+            <div class="alert alert-danger">
+               <h4><%= pluralize(wiki.errors.count, "error") %>.</h4>
+               <ul>
+                  <% wiki.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+               </ul>
+            </div>
+         <% end %>
+         <%= form_group_tag(@wiki.errors[:title]) do %>
+           <%= f.label :title %>
+           <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
+         <% end %>
+         <%= form_group_tag(@wiki.errors[:description]) do %>
+            <%= f.label :body %>
+            <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
+         <% end %>
+
+         <% if current_user.premium? && @wiki.user.eql?(current_user)%>
+            <div class="form-group">
+               <%= f.label :private, class: 'checkbox' do %>
+                  <%= f.check_box :private %> Private wiki
+               <% end %>
+            </div>
+         <% end %>
+
+        <div class="form-group">
+           <%= f.submit "Save", class: 'btn btn-success' %>
+        </div>
+      <% end %>
    </div>
 </div>

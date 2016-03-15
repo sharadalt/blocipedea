@@ -9,10 +9,10 @@ class WikiPolicy < ApplicationPolicy
     end
     
     def resolve
-      wikis = []
-      if user.admin? or user.standard? or user.premium?
-        wikis = scope.all
-        #scope.all
+      if user.standard?
+        Wiki.where(private: false)
+      elsif user.premium?
+        Wiki.where('user_id = ? OR private = ?', user.id, false)
       end
     end
   end
@@ -52,5 +52,8 @@ class WikiPolicy < ApplicationPolicy
     user.present?
   end
   
+  def downgrade?
+    true
+  end
   
 end

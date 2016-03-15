@@ -20,3 +20,4 @@
 /config/application.yml
 
 Gemfile.lock
+/config/initializers/stripe.rb

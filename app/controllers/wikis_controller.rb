@@ -1,12 +1,12 @@
 class WikisController < ApplicationController
   
-  after_action :verify_authorized, except: :index
+  after_action :verify_authorized, except: [:index, :downgrade]
   after_action :verify_policy_scoped, only: :index
   
   before_action :authenticate_user!
   
   def index
-    @wikis = Wiki.all
+    #@wikis = Wiki.all
     @wikis = policy_scope(Wiki)
     @wiki = Wiki.new
     authorize @wiki
@@ -23,14 +23,18 @@ class WikisController < ApplicationController
     @wiki = Wiki.new
     @wiki.user = @user
   end
-
+  
   def create
     @user = current_user
     @wikis = @user.wikis
     @wiki = @wikis.new
     @wiki.title = params[:wiki][:title]
     @wiki.body  = params[:wiki][:body]
-    @wiki.private = false
+    if current_user.premium?
+      @wiki.private  = params[:wiki][:private]
+    else
+      @wiki.private = false
+    end
     @wiki.user = @user
     authorize @wiki
     
@@ -83,6 +87,13 @@ class WikisController < ApplicationController
       flash[:error] = "The owner has to delete it"
       redirect_to wikis_path
     end
+  end
+  
+  def downgrade
+    current_user.role = :standard
+    p current_user.role
+    redirect_to wikis_path
+    current_user.save
   end
    
    private

@@ -30,7 +30,6 @@ class ChargesController < ApplicationController
    p current_user.role
    p "hello"
    redirect_to wikis_path
-   
   end
 
   def new
@@ -41,10 +40,11 @@ class ChargesController < ApplicationController
     }
     #flash[:notice] = 'In New'
   end
-  # Stripe will send back CardErrors, with friendly messages
- # when something goes wrong.
- # This `rescue block` catches and displays those errors.
- rescue Stripe::CardError => e
-   flash.now[:alert] = e.message
-   redirect_to new_charge_path
+
+   # Stripe will send back CardErrors, with friendly messages
+   # when something goes wrong.
+   # This `rescue block` catches and displays those errors.
+   rescue Stripe::CardError => e
+    flash.now[:alert] = e.message
+    redirect_to new_charge_path
 end

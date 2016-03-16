@@ -30,7 +30,7 @@ class WikisController < ApplicationController
     @wiki = @wikis.new
     @wiki.title = params[:wiki][:title]
     @wiki.body  = params[:wiki][:body]
-    if current_user.premium?
+    if current_user.premium? || current_user.admin?
       @wiki.private  = params[:wiki][:private]
     else
       @wiki.private = false

@@ -2,10 +2,9 @@
 <html>
 <body>
 <ul class="nav navbar-nav pull-left">
+
 <% if current_user.standard? %>
   <%= link_to "upgrade_account_to_premium_by_paying", new_charge_path, class: 'btn btn-primary btn-md' %>
-<% elsif current_user.premium? %>
-  <%= link_to "down_grade_account", wiki_downgrade_path(current_user), class: 'btn btn-primary btn-md' %>
 <% end %>
 
 <h4>My Wikis</h4>
@@ -31,6 +30,27 @@
     <%= render partial: 'form', locals: {wiki: @wiki} %>
   </div>
 </div>
+
+<% if current_user.premium? %>
+  <div class="row">
+    <div class="col-md-4">
+       <p class="ex1">You are premium user! </p>
+       If you downgrade your account your private wikis will become public!!
+       You want to do it? 
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4", style="width: auto;">
+      <%= link_to "Yes", wiki_downgrade_path(current_user), class: 'btn btn-success' %>
+    </div>
+    <div class="col-md-4", style="width: auto">
+      <%= button_to "No", {:controller => "wikis", :action => "index"}, class: 'btn btn-failure', :method => :get %>
+    </div>
+  </div>
+
+  <%#= link_to "down_grade_account", wiki_downgrade_path(current_user), class: 'btn btn-primary btn-md' %>
+<% end %>
 </ul>
 </body>
 </html>

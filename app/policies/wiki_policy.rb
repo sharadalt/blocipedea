@@ -11,7 +11,7 @@ class WikiPolicy < ApplicationPolicy
     def resolve
       if user.standard?
         Wiki.where(private: false)
-      elsif user.premium? or user.admin? 
+      elsif user.premium? || user.admin? 
         Wiki.where('user_id = ? OR private = ?', user.id, false)
       end
     end

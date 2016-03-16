@@ -91,9 +91,8 @@ class WikisController < ApplicationController
   
   def downgrade
     current_user.role = :standard
-    p current_user.role
-    redirect_to wikis_path
     current_user.save
+    redirect_to wikis_path
   end
    
    private

@@ -13,6 +13,7 @@ class WikisController < ApplicationController
   end
   
   def show
+    @wikis = Wiki.all
     @wiki = Wiki.find(params[:id])
     authorize @wiki
   end

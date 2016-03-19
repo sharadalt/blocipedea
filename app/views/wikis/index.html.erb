@@ -8,20 +8,25 @@
 <% end %>
 
 <h4>My Wikis</h4>
-<table style="width:70%">
+<table style="width:50%">
   <tr>
     <th>Wiki(click wiki link below to edit) </th>
+    <th>Wiki(click link to show) </th>
     <th>Wiki(click link to delete) </th>
   </tr>
   <% @wikis.each do |wiki| %>
-     <tr>
-    <% if policy(wiki).edit? %>
+    <tr>
+        <% if policy(wiki).edit? %>
           <td><%= link_to wiki.title, edit_wiki_path(wiki), class: 'btn btn-link btn-md' %></td>
-      <% end %>
-          <% if policy(wiki).destroy? %>
-            <td><%= link_to "delete", [wiki], method: :delete, class: 'btn btn-warning btn-md' %></td>
-          <% end %>
-        </tr>
+        <% end %>
+        <% if policy(wiki).show? %>
+          <td><%= link_to "show", wiki_path(wiki), class: 'btn btn-link btn-md' %></td>
+        <% end %>
+        <% if policy(wiki).destroy? %>
+          <td><%= link_to "delete", [wiki], method: :delete, class: 'btn btn-warning btn-md' %></td>
+        <% end %>
+      </p>
+    </tr>
   <% end %>
 </table>
 <h4>Create New Wiki</h4>

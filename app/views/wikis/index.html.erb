@@ -20,7 +20,8 @@
           <td><%= link_to wiki.title, edit_wiki_path(wiki), class: 'btn btn-link btn-md' %></td>
         <% end %>
         <% if policy(wiki).show? %>
-          <td><%= link_to "show", wiki_path(wiki), class: 'btn btn-link btn-md' %></td>
+          <td><%#= link_to "show", wiki_path(wiki), class: 'btn btn-link btn-md' %></td>
+          <td><%= link_to "show", [wiki], method: :get, class: 'btn btn-link btn-md' %></td>
         <% end %>
         <% if policy(wiki).destroy? %>
           <td><%= link_to "delete", [wiki], method: :delete, class: 'btn btn-warning btn-md' %></td>

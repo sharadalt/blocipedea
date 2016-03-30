@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   #get 'charges/new'
   
   resources :charges, only: [:new, :create]
+  resources :collaborators, only: [:create, :destroy]
 
   resources  :wikis do
       get 'downgrade'
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
   
   devise_for :users
+  #resources :users, only: [:index]
   
   resources :users do
     resources :wikis do

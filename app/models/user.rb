@@ -5,7 +5,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   
   has_many :wikis, :dependent => :destroy
+  has_many :collaborators, dependent: :destroy
+  has_many :collaborator_wikis, through: :collaborators, source: :wiki
+  
   enum role: [:admin, :standard, :premium]
   before_save { self.role ||= :standard }
  
+  def collaborator_for(wiki)
+     collaborators.where(wiki_id: wiki.id).first
+  end
 end

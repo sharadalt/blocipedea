@@ -3,10 +3,12 @@ class CollaboratorsController < ApplicationController
  
    def create
      wiki = Wiki.find(params[:wiki_id])
-     collaborator = current_user.collaborators.build(wiki: wiki)
+     user = User.find(params[:user_id])
+     puts user
+     collaborator = wiki.collaborators.build(user: user)
  
      if collaborator.save
-       flash[:notice] = "Collaborator created"
+       flash[:notice] = "Collaborator created with "
      else
        flash[:alert] = "Collaborator creation failed."
      end
@@ -14,14 +16,15 @@ class CollaboratorsController < ApplicationController
    end
    
    def destroy
-     wiki = Wiki.find(params[:id])
-     collaborator = current_user.collaborators.where(wiki: wiki).create
+     wiki = Wiki.find(params[:wiki_id])
+     user = User.find(params[:user_id])
+     collaborator = wiki.collaborators.find(user)
  
      if collaborator.destroy
        flash[:notice] = "Removed collaborator."
      else
        flash[:alert] = "Collaborator removal failed."
      end
-       redirect_to wikis_path
+     redirect_to wikis_path
    end
 end

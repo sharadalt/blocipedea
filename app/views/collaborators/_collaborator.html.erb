@@ -6,12 +6,12 @@
       <% if wiki.private? && user != wiki.user && !wiki.collaborators.include?(user) %>
         <div class="user">
           <%= user.name %> 
-          <%= link_to  "make collaborator", collaborators_path(wiki_id: wiki.id), class: 'btn btn-primary', method: :post %>
+          <%= link_to  "make collaborator", collaborators_path(wiki_id: wiki.id, user_id:user.id), class: 'btn btn-primary', method: :post %>
         </div>
       <% end %>
-      <% if wiki.private? && user != wiki.user && wiki.collaborators.include?(user) %>
+      <% if wiki.private? && user != wiki.user && wiki.collaborator_users.include?(user) %>
         <%= user.name %> 
-        <%= link_to "Remove_collaborator", collaborator_path(wiki), class: 'btn btn-danger', method: :delete %>
+        <%= link_to "Remove_collaborator", collaborator_path(wiki_id: wiki.id, user_id:user.id), class: 'btn btn-danger', method: :delete %>
         <%#= link_to "delete collaborator", [wiki, collaborator], method: :delete do %>
       <% end %>
     <% end %>

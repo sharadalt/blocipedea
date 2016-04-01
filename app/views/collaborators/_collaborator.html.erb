@@ -3,15 +3,17 @@
     <%# this should more properly use a variable set in your controller rather than User.all - for example you might want to limit the list of possible collaborators according to some condition %>
     <% User.all.each do |user| %>
       <% #if collaborator = user.collaborator_for(wiki) %>
-      <% if wiki.private? && user != wiki.user && !wiki.collaborators.include?(user) %>
+      
+      <% if wiki.private? && user != wiki.user && !(collaborator = user.collaborator_for(wiki, user)) %>
         <div class="user">
           <%= user.name %> 
           <%= link_to  "make collaborator", collaborators_path(wiki_id: wiki.id, user_id:user.id), class: 'btn btn-primary', method: :post %>
         </div>
       <% end %>
-      <% if wiki.private? && user != wiki.user && wiki.collaborator_users.include?(user) %>
+      <% if wiki.private? && user != wiki.user && (collaborator = user.collaborator_for(wiki,user)) %>
+        <%#= raise collaborator.inspect %>
         <%= user.name %> 
-        <%= link_to "Remove_collaborator", collaborator_path(wiki_id: wiki.id, user_id:user.id), class: 'btn btn-danger', method: :delete %>
+        <%= link_to "Remove_collaborator", collaborator_path(user.collaborator_for(wiki,user)), class: 'btn btn-danger', method: :delete %>
         <%#= link_to "delete collaborator", [wiki, collaborator], method: :delete do %>
       <% end %>
     <% end %>

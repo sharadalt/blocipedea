@@ -60,7 +60,9 @@ class WikisController < ApplicationController
     authorize @wiki
     @wiki.title = params[:wiki][:title]
     @wiki.body  = params[:wiki][:body]
-    @wiki.private = params[:wiki][:private]
+    if current_user == @wiki.user
+      @wiki.private = params[:wiki][:private]
+    end
     #@wiki.assign_attributes(wiki_params)
     
      if @wiki.save
@@ -93,6 +95,13 @@ class WikisController < ApplicationController
   def downgrade
     current_user.role = :standard
     current_user.save
+    @wikis = Wiki.all
+    @wikis.each do |wiki|
+      if current_user == wiki.user && wiki.private?
+        wiki.private = 'false'
+        wiki.save
+      end
+    end
     redirect_to wikis_path
   end
    

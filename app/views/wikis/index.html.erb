@@ -20,7 +20,6 @@
           <td><%= link_to wiki.title, edit_wiki_path(wiki), class: 'btn btn-link btn-md' %></td>
         <%# end %>
         <%# if policy(wiki).show? %>
-          <td><%#= link_to "show", wiki_path(wiki), class: 'btn btn-link btn-md' %></td>
           <td><%= link_to "show", [wiki], method: :get, class: 'btn btn-link btn-md' %></td>
         <%# end %>
         <%# if policy(wiki).destroy? %>
@@ -41,7 +40,7 @@
   <div class="row">
     <div class="col-md-4">
        <p class="ex1">You are premium user! </p>
-       If you downgrade your account your private wikis will become public!!
+       If you downgrade your account, your private wikis will become public!!
        You want to do it? 
     </div>
   </div>

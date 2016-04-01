@@ -4,11 +4,10 @@ class CollaboratorsController < ApplicationController
    def create
      wiki = Wiki.find(params[:wiki_id])
      user = User.find(params[:user_id])
-     puts user
      collaborator = wiki.collaborators.build(wiki: wiki, user: user)
  
      if collaborator.save
-       flash[:notice] = "Collaborator created with "
+       flash[:notice] = "Collaborator created."
      else
        flash[:alert] = "Collaborator creation failed."
      end
@@ -19,9 +18,6 @@ class CollaboratorsController < ApplicationController
   
      collaborator = Collaborator.find(params[:id])
      #collaborator = wiki.collaborators.find_by(params[:wiki_id] == wiki.id)
-     
-     puts collaborator
- 
      if collaborator.destroy
        flash[:notice] = "Removed collaborator."
      else

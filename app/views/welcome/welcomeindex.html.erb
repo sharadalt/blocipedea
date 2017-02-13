@@ -1,0 +1,49 @@
+<br>
+
+  <% content_for :top_content do %>
+    <nav class="navbar navbar">
+      <div class="jumbotron">
+        <div class="container text-center">
+          <div class="boxed border-medium">
+            <div style="width:400px; height:400; float:left;">
+              <h5 style="text-align:left;color:blue;font-family:AIR DARLING;">&nbsp;&nbsp;&nbsp;&nbsp;Blocipedia:</h5> <br><br>
+              <h2 style="text-align:left; font-family:AIR DARLING;margin-top:2px">&nbsp;&nbsp;Create & Share Markdown &nbsp;&nbsp;Wikis</h2> 
+              
+              <p style="text-align:left; font-size:15px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;Collaborate with colleagues on documents <br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;and live preview edits
+              </p>
+              <div style="margin-left:-300px;margin-top:28px;" >
+                <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-md'%>
+              </div>
+            </div>
+            </br>
+            <div style="width:380px; height:400;float:right;background-color:white; border-radius:20px;">
+              <p style="font-size:14px;color:black;text-align:left;font-family:AIR DARLING;">
+                &nbsp;&nbsp;&nbsp;&nbsp;##Free Wikis <br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Create free Markdown Wikis with Blocipedia. There are a ton of <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;awesome features to use for collaborating and sharing your<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;content with others. <br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;** Create lists **<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;|**Tables** | **Description**|
+                <br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;```ruby
+                &nbsp;&nbsp;&nbsp;&nbsp;code snipets are fun too!
+                &nbsp;&nbsp;&nbsp;&nbsp;```
+              </p>
+            </div>
+            <br><br><br><br><br><br>
+            <div style="width:250px;height:75px;float:left;background-color:blue;margin-top:50px;margin-left:120px;margin-right:400px; border-radius:20px">
+              <p style="text-align:center;color:white;font-family:AIR DARLING;">&nbsp;&nbsp;Basic Plan<br>$0</p> <br><br>
+            </div>
+        
+            <div style="width:250px;height:75px;float:right;background-color:blue;margin-right:120px;margin-bottom:250px;margin-top:-75px; border-radius:20px">
+              <p style="text-align:center;color:white;font-family:AIR DARLING;">&nbsp;&nbsp;Premium Plan<br>$2/per month</p> <br><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>  
+  <% end %>
+  <script>blocmetrics.report("Event_for Blocmetrics");</script>
+  </br>

@@ -1,3 +1,6 @@
+
+<div style="width:600px; height:950px; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
+
 <%# raise @wiki.inspect %>
 <h1>Edit wiki </h1>
 <div class = "row">
@@ -15,17 +18,17 @@
          <% end %>
          <%= form_group_tag(@wiki.errors[:title]) do %>
            <%= f.label :title %>
-           <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
+           <%= f.text_field :title, size: 15, class: 'form-control', placeholder: "Enter wiki title" %>
          <% end %>
          <%= form_group_tag(@wiki.errors[:description]) do %>
             <%= f.label :body %>
-            <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
+            <%= f.text_area :body, style: 'height:400px;width:400px;', class: 'form-control', placeholder: "Enter wiki body" %>
          <% end %>
          <p> <%= markdown(@wiki.body) %> </p>
          <% if (current_user.admin? || current_user.premium?) || current_user.collaborator_for(@wiki)%>
             <div class="form-group">
                <%= f.label :private, class: 'checkbox' do %>
-                  <%= f.check_box :private %> Private wiki
+                  <%= f.check_box :private, style: 'margin-left:2px; margin-top:2px; margin-bottom:2px' %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Private wiki
                <% end %>
             </div>
          <% end %>
@@ -36,4 +39,5 @@
       <% end %>
       <%= render partial: 'collaborators/collaborator', locals: { wiki: @wiki } %>
    </div>
+</div>
 </div>

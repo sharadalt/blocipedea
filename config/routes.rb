@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   
   get 'welcome/index'
 
-  root to: 'welcome#index'
+  root to: 'welcome#welcomeindex'
   
   devise_for :users
   #resources :users, only: [:index]

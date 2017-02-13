@@ -1,16 +1,46 @@
-<h2>Sign in</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blocipedia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1;">
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :name, required: false, autofocus: true %>
-    <%= f.input :email, required: false %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+<body>
+  <div style="width:600px; height:350px; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
+   
+<% header "Sign In" %>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<%= devise_error_messages! %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign in" %>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, class: 'form-control' %>
   </div>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+    <% if @validatable %>
+      <span class="help-block"><%= @minimum_password_length %> characters minimum</span>
+    <% end %>
+  </div>
+
+  <%= f.submit "Sign in", class: 'btn btn-primary' %>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+
+</div>
+</body>
+</html>

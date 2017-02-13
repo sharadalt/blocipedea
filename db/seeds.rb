@@ -17,7 +17,7 @@ end
 users = User.all
 
 #Create Wikis
-10.times do
+5.times do
     Wiki.create!(
         title:  RandomData.random_sentence,
         body:   RandomData.random_paragraph,

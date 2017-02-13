@@ -1,25 +1,24 @@
 <br>
 
-
-<% content_for :top_content do %>
-  <div class="jumbotron">
-    <div class="container">
-      <div class="boxed border-medium">
-       <h2>Blocipedia: Social, Markdown Wikis</h2>
-        <h3>Create and Share Markdown Wikis</h3>
-            <h3>
-              <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-md' %>
-            </h3>
-            <section class="border-medium"> 
+  <% content_for :top_content do %>
+    <div class="jumbotron">
+      <div class="container">
+        <div class="boxed border-medium">
+          <h2>Blocipedia: Social, Markdown Wikis</h2>
+          <h3>Create and Share Markdown Wikis</h3>
+          <h3>
+            <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-md' %>
+          </h3>
+          <section class="border-medium"> 
               Create as many public wikis as you want with free plan 
               and create Private wikis with Premium plan <br>
-              <%= link_to "Get Going", wikis_path, class: 'btn btn-primary btn-sm' %>
-            </section>
+              <%= link_to "Get Started", wikis_path, class: 'btn btn-primary btn-sm' %>
+          </section>
+        </div>
       </div>
-     
-      
     </div>
-  </div>
-<% end %>
-<script>blocmetrics.report("Event_for Blocmetrics");</script>
-</br>
+  <% end %>
+  <script>blocmetrics.report("Event_for Blocmetrics");</script>
+  </br>
+</body>
+</html>

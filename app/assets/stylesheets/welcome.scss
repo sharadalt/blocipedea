@@ -2,9 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .boxed {
-  width: 60%;
+  border: 50px solid green ;
+  width: 800px;
+  height: 500px;
   margin-left: auto;
   margin-right: auto;
+  margin-top:20px;
+  color: white;
+  background-color: black;
+  border-radius:20px;
 }
 
 section {

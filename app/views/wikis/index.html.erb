@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html>
-<body>
-<ul class="nav navbar-nav pull-left">
 
+<div style="width:680px; height:900px; margin_top:20px; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
+<ul class="nav navbar-nav pull-left">
 <% if current_user.standard? %>
   <%= link_to "upgrade_account_to_premium_by_paying", new_charge_path, class: 'btn btn-primary btn-md' %>
 <% end %>
 
 <h4>My Wikis</h4>
-<table style="width:50%">
+<table style="width:100%">
   <tr>
     <th>Wiki(click wiki link below to edit) </th>
     <th>Wiki(click link to show) </th>
@@ -47,15 +45,15 @@
 
   <div class="row">
     <div class="col-md-4", style="width: auto;">
-      <%= link_to "Yes", wiki_downgrade_path(current_user), class: 'btn btn-success' %>
+      <%= link_to "Yes", wiki_downgrade_path(current_user), class: 'btn btn-primary' %>
     </div>
     <div class="col-md-4", style="width: auto">
-      <%= button_to "No", {:controller => "wikis", :action => "index"}, class: 'btn btn-failure', :method => :get %>
+      <%= button_to "No", {:controller => "wikis", :action => "index"}, class: 'btn btn-primary', :method => :get %>
     </div>
   </div>
 
   <%#= link_to "down_grade_account", wiki_downgrade_path(current_user), class: 'btn btn-primary btn-md' %>
 <% end %>
 </ul>
-</body>
-</html>
+</div>
+

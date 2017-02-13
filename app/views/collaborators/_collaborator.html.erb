@@ -1,16 +1,17 @@
 <h4>Add Collaborators </h4>
-<table style="width:50%">
+<table style="width:300px">
  <div class="form-group">
     <%# this should more properly use a variable set in your controller rather than User.all - for example you might want to limit the list of possible collaborators according to some condition %>
     <% User.all.each do |user| %>
       <tr>
         <% if wiki.private? && user != wiki.user && current_user == wiki.user && !(user.collaborator_for(wiki)) %>
+           <%#= raise user.name.inspect %>
           <td><%= user.name %></td>
-          <td><%= link_to  "make_collaborator", collaborators_path(wiki_id: wiki.id, user_id:user.id), class: 'btn btn-primary', method: :post %></td>
+          <td><%= link_to  "make_collaborator", collaborators_path(wiki_id: wiki.id, user_id:user.id), class: 'btn btn-success btn-sm', method: :post %></td>
         <% end %>
         <% if wiki.private? && user != wiki.user && current_user == wiki.user && (user.collaborator_for(wiki)) %>
           <td><%= user.name %></td>
-          <td><%= link_to "remove_collaborator", collaborator_path(user.collaborator_for(wiki)), class: 'btn btn-danger', method: :delete %></td>
+          <td><%= link_to "remove_collaborator", collaborator_path(user.collaborator_for(wiki)), class: 'btn btn-warning btn-sm', method: :delete %></td>
         <% end %>
       </tr>
     <% end %>

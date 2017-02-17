@@ -2,6 +2,12 @@
 <div style="width:680px; height:900px; margin_top:20px; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
 <ul class="nav navbar-nav pull-left">
 <% if current_user.standard? %>
+  <h2>Standard User</h2>
+<% else %>
+  <h2>Premium User</h2>
+<%end%>
+  
+<% if current_user.standard? %>
   <%= link_to "upgrade_account_to_premium_by_paying", new_charge_path, class: 'btn btn-primary btn-md' %>
 <% end %>
 
@@ -15,10 +21,10 @@
   <% @wikis.each do |wiki| %>
     <tr>
         <%# if policy(wiki).edit? %>
-          <td><%= link_to wiki.title, edit_wiki_path(wiki), class: 'btn btn-link btn-md' %></td>
+          <td><%= link_to wiki.title, edit_wiki_path(wiki), {:style=>'color:white', class: 'btn btn-link btn-md'} %></td>
         <%# end %>
         <%# if policy(wiki).show? %>
-          <td><%= link_to "show", [wiki], method: :get, class: 'btn btn-link btn-md' %></td>
+          <td><%= link_to "show", [wiki], method: :get, class: 'btn btn-primary btn-md' %></td>
         <%# end %>
         <%# if policy(wiki).destroy? %>
           <td><%= link_to "delete", [wiki], method: :delete, class: 'btn btn-warning btn-md' %></td>

@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Blocipedia</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1;">
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
 
-<body>
-  <div style="width:600px; height:350px; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
+<div style="width:600px; height:500px; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
    
-<% header "Sign In" %>
+<h2>Sign In</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
@@ -39,8 +29,4 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
-
-
 </div>
-</body>
-</html>

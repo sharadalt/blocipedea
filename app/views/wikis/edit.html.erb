@@ -1,8 +1,13 @@
 
-<div style="width:600px; height:950px; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
+<div style="width:600px; height:1200px; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
 
 <%# raise @wiki.inspect %>
-<h1>Edit wiki </h1>
+<% if @wiki.private? %>
+  <h2>Edit Private wiki</h2>
+<% else %>
+  <h2>Edit Public wiki</h2>
+<%end%>
+
 <div class = "row">
    <div class = "col-md-8">
       <%= form_for [@user,@wiki] do |f| %>
@@ -22,7 +27,7 @@
          <% end %>
          <%= form_group_tag(@wiki.errors[:description]) do %>
             <%= f.label :body %>
-            <%= f.text_area :body, style: 'height:400px;width:400px;', class: 'form-control', placeholder: "Enter wiki body" %>
+            <%= f.text_area :body, style: 'height:300px;width:600px;', class: 'form-control', placeholder: "Enter wiki body" %>
          <% end %>
          <p> <%= markdown(@wiki.body) %> </p>
          <% if (current_user.admin? || current_user.premium?) || current_user.collaborator_for(@wiki)%>
@@ -37,7 +42,9 @@
            <%= f.submit "Save", class: 'btn btn-success' %>
         </div>
       <% end %>
-      <%= render partial: 'collaborators/collaborator', locals: { wiki: @wiki } %>
+      <% if (current_user.admin? || current_user.premium? && @wiki.private) %>
+        <%= render partial: 'collaborators/collaborator', locals: { wiki: @wiki } %>
+      <% end %>
    </div>
 </div>
 </div>

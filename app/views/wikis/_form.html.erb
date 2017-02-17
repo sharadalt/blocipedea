@@ -11,11 +11,12 @@
   <% end %>
   <%= form_group_tag(wiki.errors[:title]) do %>
      <%= f.label :title %>
-     <%= f.text_field :title, style:'width:400px', class: 'form-control', placeholder: "Enter wiki title" %>
+     <%= f.text_field :title, style:'width:500px', class: 'form-control', placeholder: "Enter wiki title" %>
   <% end %>
   <%= form_group_tag(@wiki.errors[:description]) do %>
     <%= f.label :body %>
-    <%= f.text_area :body, style:'width:400px;height:100px;', class: 'form-control', placeholder: "Enter wiki body" %>
+    <%#= f.text_area :body, style:'width:400px;height:100px;', class: 'form-control', placeholder: "Enter wiki body" %>
+<%= f.text_area :body, style:'width:500px;height:100px;', data: {provide: "markdown"}, class: 'form-control', placeholder: "Enter wiki body" %>
   <% end %>
   </p>
   <% if current_user.admin? || current_user.premium? || current_user.collaborator_for(wiki) %>

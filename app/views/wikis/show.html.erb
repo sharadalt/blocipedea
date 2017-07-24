@@ -1,13 +1,5 @@
-<div style="width:600px; height:600px; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
+<div style="width:90%; height:100%; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
 <h2>Wiki Show</h2>
-<table style="width:100%;; background-color:black;color:white">
-  <tr>
-    <th>Wiki Title</th>
-    <th>Wiki Body</th>
-  </tr>
-  <tr>
-    <td><%= @wiki.title %></td>
-    <td><%= markdown(@wiki.body)  %></td>
-  </tr>
- </table>
+<%= markdown(@wiki.title)%>
+<%= markdown(@wiki.body)  %>
 </div>

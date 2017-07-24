@@ -2,35 +2,22 @@
     
         <div class="container-fluid text-center">
           <div class="boxed ">
-            <div style="width:340px; height:400; float:left;">
+            <!-- <div style="width:340px; height:400px; float:left;"> -->
+            <%= render "devise/shared/loggedin" %>
               <h5 style="text-align:left;color:white;font-family:AIR DARLING;">&nbsp;&nbsp;&nbsp;&nbsp;Blocipedia:</h5> <br><br>
-              <h1 style="text-align:left;margin-left:16px">Blocipedia:</h1>
-              <h2 style="text-align:left; font-family:AIR DARLING;margin-top:2px">&nbsp;&nbsp;Create & Share Markdown &nbsp;&nbsp;Wikis</h2> 
-              
-              <p style="text-align:left; font-size:15px;">
-                &nbsp;&nbsp;&nbsp;&nbsp;Collaborate with colleagues on documents <br> 
+              <h1 style="text-align:center;margin-top:50px;">Blocipedia:</h1>
+              <h2 style="text-align:center; font-family:AIR DARLING;margin-top:2px">&nbsp;&nbsp;Create & Share Markdown Wikis Collaborate <br> 
+                          with colleagues on documents </h2> <br> 
               </p>
-              <div style="margin-left:-230px;margin-top:28px;" >
-                <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-md'%>
+              <div style="margin-left:-5px;margin-top:50px;" >
+                <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-lg'%>
+                <%= link_to 'Sign In', new_user_session_path,  class: 'btn btn-primary btn-lg' %>
+                <%= link_to "Get Started", wikis_path, class: 'btn btn-primary btn-lg' %>
               </div>
-            </div>
+            <!--</div> -->
             </br>
-            <div style="width:400px; height:400;float:right;background-color:white;border:5px solid black">
-              <p style="font-size:14px;color:black;text-align:left;font-family:AIR DARLING;">
-                &nbsp;&nbsp;&nbsp;&nbsp;##Free Wikis <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;Create free Markdown Wikis with Blocipedia. There are a ton of <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;awesome features to use for collaborating and sharing your<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;content with others. <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;** Create lists **<br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;|**Tables** | **Description**|
-                <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;```ruby
-                &nbsp;&nbsp;&nbsp;&nbsp;code snipets are fun too!
-                &nbsp;&nbsp;&nbsp;&nbsp;```
-              </p>
-            </div>
-            <br><br><br><br><br><br>
-            <div style="width:250px;height:75px;float:left;background-color:blue;margin-top:100px;margin-left:120px;margin-right:400px;">
+            <br><br><br><br>
+            <div style="width:250px;height:75px;float:left;background-color:blue;margin-top:10px;margin-left:120px;margin-right:400px;">
               <p style="text-align:center;color:white;font-family:AIR DARLING;">&nbsp;&nbsp;Basic Plan<br>$0</p> <br><br>
             </div>
         
@@ -39,8 +26,8 @@
             </div>
           </div>
         </div>
-  <% end %>
-  <script>blocmetrics.report("Event_for Blocmetrics");</script>
+<% end %>
+  
   </br>
 
   

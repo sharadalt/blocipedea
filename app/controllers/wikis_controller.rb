@@ -19,16 +19,17 @@ class WikisController < ApplicationController
   end
   
   def new
-    @user = current_user
-    @wikis = @user.wikis
+    #@user = current_user
+   #@wikis = @user.wikis
     @wiki = Wiki.new
-    @wiki.user = @user
+   # @wiki.user = @user
+
   end
   
   def create
     @user = current_user
     @wikis = @user.wikis
-    @wiki = @wikis.new
+    @wiki = Wiki.new
     @wiki.title = params[:wiki][:title]
     @wiki.body  = params[:wiki][:body]
     if current_user.premium? || current_user.admin?

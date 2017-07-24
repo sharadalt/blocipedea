@@ -1,5 +1,5 @@
 
-<div style="width:600px; height:1200px; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
+<div style="width:90%; height:1200px; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
 
 <%# raise @wiki.inspect %>
 <% if @wiki.private? %>
@@ -22,24 +22,27 @@
             </div>
          <% end %>
          <%= form_group_tag(@wiki.errors[:title]) do %>
-           <%= f.label :title %>
-           <%= f.text_field :title, size: 15, class: 'form-control', placeholder: "Enter wiki title" %>
+           <%= f.label :title, style:'margin-left:40px;width:750px;' %>
+           <%= f.text_field :title,  style:'margin-left:40px;width:750px;',size: 15, class: 'form-control', placeholder: "Enter wiki title" %>
          <% end %>
          <%= form_group_tag(@wiki.errors[:description]) do %>
-            <%= f.label :body %>
-            <%= f.text_area :body, style: 'height:300px;width:600px;', class: 'form-control', placeholder: "Enter wiki body" %>
+            <%= f.label :body,  style:'margin-left:40px;' %>
+            <%= f.text_area :body, style: 'height:300px;width:750px; margin-left:40px;', class: 'form-control', placeholder: "Enter wiki body" %>
          <% end %>
-         <p> <%= markdown(@wiki.body) %> </p>
+         <div style="margin-left:40px;">
+           <p> <%= markdown(@wiki.body) %> </p> 
+         </div>
+         
          <% if (current_user.admin? || current_user.premium?) || current_user.collaborator_for(@wiki)%>
-            <div class="form-group">
-               <%= f.label :private, class: 'checkbox' do %>
-                  <%= f.check_box :private, style: 'margin-left:2px; margin-top:2px; margin-bottom:2px' %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Private wiki
+            <div class="form-group", style: 'margin-left:40px;>
+               <%= f.label :private,class: 'checkbox' do %>
+                  <%= f.check_box :private, style: 'margin-left:40px;margin-top:2px; margin-bottom:2px' %>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Private wiki
                <% end %>
             </div>
          <% end %>
 
         <div class="form-group">
-           <%= f.submit "Save", class: 'btn btn-success' %>
+           <%= f.submit "Save", class: 'btn btn-success',style: 'margin-left:40px;' %>
         </div>
       <% end %>
       <% if (current_user.admin? || current_user.premium? && @wiki.private) %>

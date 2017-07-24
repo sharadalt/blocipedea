@@ -10,24 +10,24 @@
     </div>
   <% end %>
   <%= form_group_tag(wiki.errors[:title]) do %>
-     <%= f.label :title %>
-     <%= f.text_field :title, style:'width:500px', class: 'form-control', placeholder: "Enter wiki title" %>
+     <%= f.label :title, style:'margin-left:40px;' %>
+     <%= f.text_field :title, style:'width:800px;margin-left:40px;', class: 'form-control', placeholder: "Enter wiki title" %>
   <% end %>
   <%= form_group_tag(@wiki.errors[:description]) do %>
-    <%= f.label :body %>
+    <%= f.label :body, style:'width:800px;margin-left:40px' %>
     <%#= f.text_area :body, style:'width:400px;height:100px;', class: 'form-control', placeholder: "Enter wiki body" %>
-<%= f.text_area :body, style:'width:500px;height:100px;', data: {provide: "markdown"}, class: 'form-control', placeholder: "Enter wiki body" %>
+<%= f.text_area :body, style:'width:800px;height:300px; margin-left:40px;', data: {provide: "markdown"}, class: 'form-control', placeholder: "Enter wiki body" %>
   <% end %>
   </p>
   <% if current_user.admin? || current_user.premium? || current_user.collaborator_for(wiki) %>
-    <div class="form-group">
+    <div class="form-group", style ="margin-left:40px;">
       <%= f.label :private, class: 'checkbox' do %>
-        <%= f.check_box :private, style: 'margin-left:2px; margin-top:2px; margin-bottom:2px' %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Private wiki
+        <%= f.check_box :private, style: 'margin-left:0px;margin-top:2px; margin-bottom:2px;' %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Private wiki
       <% end %>
     </div>
   <% end %>
 
   <div class="form-group">
-    <%= f.submit "Save", class: 'btn btn-success' %>
+    <%= f.submit "Save", class: 'btn btn-success', style: 'margin-left:40px;' %>
   </div>
 <% end %>

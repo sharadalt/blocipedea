@@ -1,5 +1,6 @@
 
-<div style="width:680px; height:900px; margin_top:20px; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
+<div style="width:900px; height:1200px; margin_top:20px; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
+ <%= render "devise/shared/loggedin" %>
 <ul class="nav navbar-nav pull-left">
 <% if current_user.standard? %>
   <h2>Standard User</h2>
@@ -11,8 +12,8 @@
   <%= link_to "upgrade_account_to_premium_by_paying", new_charge_path, class: 'btn btn-primary btn-md' %>
 <% end %>
 
-<h4>My Wikis</h4>
-<table style="width:100%">
+<h4 style="margin-left:40px;">My Wikis</h4>
+<table style="margin-left:40px;width:90%">
   <tr>
     <th>Wiki(click wiki link below to edit) </th>
     <th>Wiki(click link to show) </th>
@@ -28,12 +29,17 @@
         <%# end %>
         <%# if policy(wiki).destroy? %>
           <td><%= link_to "delete", [wiki], method: :delete, class: 'btn btn-warning btn-md' %></td>
+          
         <%#end %>
       </p>
     </tr>
   <% end %>
 </table>
-<h4>Create New Wiki</h4>
+<h4 style="margin-left:40px; margin-top:20px;">Create New Wiki</h4> 
+    <%#= link_to "new wiki", new_wiki_path, method: :create,  class: 'btn btn-success' %>
+    <%#= link_to "new wiki", [@wiki], method: :new, class: 'btn btn-success'%>
+    <%#= link_to "new wiki", (render partial: 'form', locals: {wiki: @wiki}),target: :_blank, class: 'btn btn-primary btn-lg' %>
+<%#= link_to "Create Wiki", class: 'btn btn-warning btn-md'%>
 <div class="row">
   <div class="col-md-4">
     <%= render partial: 'form', locals: {wiki: @wiki} %>
@@ -42,8 +48,8 @@
 
 <% if current_user.premium? %>
   <div class="row">
-    <div class="col-md-4">
-       <p class="ex1">You are premium user! </p>
+    <div class="col-md-4", style="margin-left:40px;">
+      <p class="ex1">You are premium user! </p>
        If you downgrade your account, your private wikis will become public!!
        You want to do it? 
     </div>
@@ -51,7 +57,7 @@
 
   <div class="row">
     <div class="col-md-4", style="width: auto;">
-      <%= link_to "Yes", wiki_downgrade_path(current_user), class: 'btn btn-primary' %>
+      <%= link_to "Yes", wiki_downgrade_path(current_user), class: 'btn btn-primary', style:'margin-left:40px;' %>
     </div>
     <div class="col-md-4", style="width: auto">
       <%= button_to "No", {:controller => "wikis", :action => "index"}, class: 'btn btn-primary', :method => :get %>

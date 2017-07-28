@@ -4,15 +4,15 @@
           <div class="boxed ">
             <!-- <div style="width:340px; height:400px; float:left;"> -->
             <%= render "devise/shared/loggedin" %>
-              <h5 style="text-align:left;color:white;font-family:AIR DARLING;">&nbsp;&nbsp;&nbsp;&nbsp;Blocipedia:</h5> <br><br>
-              <h1 style="text-align:center;margin-top:50px;">Blocipedia:</h1>
+              <h5 style="text-align:left;color:white;font-family:AIR DARLING;">&nbsp;&nbsp;&nbsp;&nbsp;Micropedia:</h5> <br><br>
+              <h1 style="text-align:center;margin-top:50px;">Micropedia:</h1>
               <h2 style="text-align:center; font-family:AIR DARLING;margin-top:2px">&nbsp;&nbsp;Create & Share Markdown Wikis Collaborate <br> 
                           with colleagues on documents </h2> <br> 
               </p>
               <div style="margin-left:-5px;margin-top:50px;" >
                 <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-lg'%>
                 <%= link_to 'Sign In', new_user_session_path,  class: 'btn btn-primary btn-lg' %>
-                <%= link_to "Get Started", wikis_path, class: 'btn btn-primary btn-lg' %>
+                <%= link_to "Get Started", welcome_index_path, class: 'btn btn-primary btn-lg' %>
               </div>
             <!--</div> -->
             </br>

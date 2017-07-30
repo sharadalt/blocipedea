@@ -1,6 +1,7 @@
 
 <div style="width:90%; height:1200px; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
-
+<%= render "devise/shared/project_name"%>
+<%= render "devise/shared/loggedin" %>
 <%# raise @wiki.inspect %>
 <% if @wiki.private? %>
   <h2>Edit Private wiki</h2>
@@ -42,7 +43,7 @@
          <% end %>
 
         <div class="form-group">
-           <%= f.submit "Save", class: 'btn btn-success',style: 'margin-left:40px;' %>
+           <%= f.submit "Save", class: 'btn btn-primary',style: 'margin-left:40px;' %>
         </div>
       <% end %>
       <% if (current_user.admin? || current_user.premium? && @wiki.private) %>

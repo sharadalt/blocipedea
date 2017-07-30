@@ -1,7 +1,7 @@
 
 <div style="width:600px; height:500px; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
-   
-<h2 style="margin-top:40px;">Sign In</h2>
+<%= render "devise/shared/project_name"%>
+<h2 style="margin-top:30px;">Sign In</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 

@@ -1,8 +1,8 @@
 
-<h1>Blocipedea</h1>
+<h1>Micropedea</h1>
 Wikis are a great way to collaborate on community-sourced content. 
 
-Whether the wiki is for a hobby or work-related project, Blocipedia an app that lets users create their own wikis and share them publicly or privately with other collaborators.
+Whether the wiki is for a hobby or work-related project, Micropedia an app that lets users create their own wikis and share them publicly or privately with other collaborators.
 
 <h2>Use Case </h2>
  For the use case, goto the link, https://sharadalt.github.io/portfolio/blocipedia

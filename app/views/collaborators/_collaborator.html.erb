@@ -7,7 +7,7 @@
         <% if wiki.private? && user != wiki.user && current_user == wiki.user && !(user.collaborator_for(wiki)) %>
            <%#= raise user.name.inspect %>
           <td><%= user.name %></td>
-          <td><%= link_to  "make_collaborator", collaborators_path(wiki_id: wiki.id, user_id:user.id), class: 'btn btn-success btn-sm', method: :post %></td>
+          <td><%= link_to  "make_collaborator", collaborators_path(wiki_id: wiki.id, user_id:user.id), class: 'btn btn-primay btn-sm', style:'color:white;font-weight:bold',method: :post %></td>
         <% end %>
         <% if wiki.private? && user != wiki.user && current_user == wiki.user && (user.collaborator_for(wiki)) %>
           <td><%= user.name %></td>

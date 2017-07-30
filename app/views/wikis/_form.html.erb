@@ -1,3 +1,4 @@
+
 <%= form_for [@user,@wiki] do |f| %>
   <% if wiki.errors.any? %>
     <div class="alert alert-danger">
@@ -28,6 +29,6 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.submit "Save", class: 'btn btn-success', style: 'margin-left:40px;' %>
+    <%= f.submit "Save", class: 'btn btn-primary', style: 'margin-left:40px;' %>
   </div>
 <% end %>

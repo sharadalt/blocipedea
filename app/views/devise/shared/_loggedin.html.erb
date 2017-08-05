@@ -1,17 +1,18 @@
 <ul class="nav navbar-nav pull-right">
   <% if user_signed_in? %>
     <li class="dropdown">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:Blue;font-weight:bold">
-        <%= current_user.name  %>
-        <%= "Logout" %> 
-        
+      <a class="dropdown-toggle" data-toggle="dropdown", href="#">
+        <div class="bold_letter", style:'color:white;font-weight:bold;margin-left:40px;'>
+          <%= current_user.name %>
+        </div>
         <span class="caret"></span>
       </a>
       <ul class="dropdown-menu" role="menu">
-        <li><%= link_to 'Signout', destroy_user_session_path, method: :delete %></li>
+        <%= link_to 'Signout', destroy_user_session_path, method: :delete %>
       </ul>
     </li>
   <% else %>
-  <%#= link_to 'Sign In', new_user_session_path,  class: 'btn btn-primary btn-md' %>
+  <%= link_to 'Sign_In ', new_user_session_path,style:'color:white;font-weight:bold;' %> 
+  <%= link_to 'Sign_Up', new_user_registration_path,style:'color:white;font-weight:bold;margin-left:40px;' %> 
   <% end %>
 </ul>            

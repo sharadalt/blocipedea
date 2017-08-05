@@ -1,12 +1,10 @@
 
 
   <% content_for :top_content do %>
-    <div class="jumbotron">
       <div class="container">
-        <div class="boxed border-medium" >
-          <%= render "devise/shared/project_name"%>
-          <%= render "devise/shared/loggedin" %>
-          <h2 style="margin-top:225px;">Micropedia: Social, Markdown Wikis</h2>
+        <!-- <div class="boxed" > -->
+         
+          <h2 style="margin-top:80px;">Micropedia: Social, Markdown Wikis</h2>
           <h3>Create and Share Markdown Wikis</h3>
           <h3>
             <%#= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-md' %>
@@ -14,12 +12,8 @@
           <section class="border-medium"> 
               Create as many public wikis as you want with free plan 
               and create Private wikis with Premium plan <br>
-              <%= link_to "Get Started", wikis_path, class: 'btn btn-primary btn-sm' %>
-          </section>
-        </div>
+              <%= link_to "Get Started", wikis_path(current_user), class: 'btn btn-primary btn-sm' %>
+          </section> 
+        <!--</div> -->
       </div>
-    </div>
   <% end %>
-  </br>
-</body>
-</html>

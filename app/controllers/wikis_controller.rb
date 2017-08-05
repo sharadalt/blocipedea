@@ -22,6 +22,7 @@ class WikisController < ApplicationController
     #@user = current_user
    #@wikis = @user.wikis
     @wiki = Wiki.new
+    authorize @wiki
    # @wiki.user = @user
 
   end

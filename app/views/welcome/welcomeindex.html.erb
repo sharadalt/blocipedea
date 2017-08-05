@@ -1,36 +1,27 @@
+
+
 <% content_for :top_content do %>
-    
         <div class="container-fluid text-center">
-          <div class="boxed ">
+           <!--<div class="boxed "> -->
             <!-- <div style="width:340px; height:400px; float:left;"> -->
-            <%= render "devise/shared/loggedin"%>
+            
             <%= render "devise/shared/project_name"%>
-            <div style="margin-top:0px">
-              <%= link_to "About", welcome_about_path, style:'color:white;float:left;background-color:black;',class: 'btn btn-primary btn-lg'%>
-            </div>
+            
               <h1 style="text-align:center;">Micropedia:</h1>
-              <h2 style="text-align:center; font-family:AIR DARLING;margin-top:2px">&nbsp;&nbsp;Create & Share Markdown Wikis Collaborate <br> 
+              <h2 style="text-align:center; font-family:AIR DARLING;margin-top:2px">&nbsp;&nbsp;Create & Share Markdown Wikis and Collaborate <br> 
                           with colleagues on documents </h2> <br> 
               </p>
               <div style="margin-left:-5px;margin-top:50px;" >
-                <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-lg'%>
-                <%= link_to 'Sign In', new_user_session_path,  class: 'btn btn-primary btn-lg' %>
+                <%#= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-lg'%>
+                <%#= link_to 'Sign In', new_user_session_path,  class: 'btn btn-primary btn-lg' %>
                 <%= link_to "Get Started", welcome_index_path, class: 'btn btn-primary btn-lg' %>
               </div>
             <!--</div> -->
             </br>
             <br><br><br><br>
-            <div style="width:250px;height:75px;float:left;background-color:blue;margin-top:10px;margin-left:120px;margin-right:400px;">
-              <p style="text-align:center;color:white;font-family:AIR DARLING;">&nbsp;&nbsp;Basic Plan<br>$0</p> <br><br>
-            </div>
-        
-            <div style="width:250px;height:75px;float:right;background-color:blue;margin-right:120px;margin-bottom:250px;margin-top:-75px;">
-              <p style="text-align:center;color:white;font-family:AIR DARLING;">&nbsp;&nbsp;Premium Plan<br>$2/per month</p> <br><br>
-            </div>
-          </div>
+          <!--</div> -->
         </div>
 <% end %>
-  
-  </br>
+
 
   

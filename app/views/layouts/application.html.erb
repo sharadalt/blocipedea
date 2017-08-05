@@ -8,12 +8,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="jumbotron">
-    <nav class="navbar navbar">
+    <nav class="navbar navbar-inverse">
       <div class="container">
-        <div id="navbar">
-        
-        </div> 
+        <div id="navbar-header">
+          <ul class="pull-left">
+            <%#= render "devise/shared/project_name" %>
+            <p style="color:white;font-family:AIR DARLING;">Micropedia:</p>
+            <%= link_to 'Home ', root_path, style:'color:white;font-weight:bold;' %>
+            <%= link_to ' About', welcome_about_path, style:'color:white;font-weight:bold;margin-left:40px;'%>
+          </ul>
+          <ul class="pull-right">
+            <%= render "devise/shared/loggedin",style:'color:white;font-weight:bold;' %>
+          </ul>
       </div> 
     </nav> 
   <%#= yield %>
@@ -33,6 +39,5 @@
       <h1><%= yield :header %></h1>
       <%= yield %>
     </div>
-  </div>
 </body>
 </html>

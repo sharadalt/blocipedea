@@ -1,6 +1,6 @@
 
 <%= form_for [@user,@wiki] do |f| %>
-  <% if wiki.errors.any? %>
+  <% if @wiki.errors.any? %>
     <div class="alert alert-danger">
       <h4><%= pluralize(wiki.errors.count, "error") %>.</h4>
       <ul>
@@ -10,25 +10,25 @@
       </ul>
     </div>
   <% end %>
-  <%= form_group_tag(wiki.errors[:title]) do %>
-     <%= f.label :title, style:'margin-left:40px;' %>
-     <%= f.text_field :title, style:'width:800px;margin-left:40px;', class: 'form-control', placeholder: "Enter wiki title" %>
+  <%= form_group_tag(@wiki.errors[:title]) do %>
+     <%= f.label :title %>
+     <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
   <% end %>
   <%= form_group_tag(@wiki.errors[:description]) do %>
-    <%= f.label :body, style:'width:800px;margin-left:40px' %>
+    <%= f.label :body %>
     <%#= f.text_area :body, style:'width:400px;height:100px;', class: 'form-control', placeholder: "Enter wiki body" %>
-<%= f.text_area :body, style:'width:800px;height:300px; margin-left:40px;', data: {provide: "markdown"}, class: 'form-control', placeholder: "Enter wiki body" %>
+<%= f.text_area :body, style:'height:300px;', data: {provide: "markdown"}, class: 'form-control', placeholder: "Enter wiki body" %>
   <% end %>
   </p>
-  <% if current_user.admin? || current_user.premium? || current_user.collaborator_for(wiki) %>
-    <div class="form-group", style ="margin-left:40px;">
-      <%= f.label :private, class: 'checkbox' do %>
-        <%= f.check_box :private, style: 'margin-left:0px;margin-top:2px; margin-bottom:2px;' %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Private wiki
+  <% if current_user.admin? || current_user.premium? || current_user.collaborator_for(@wiki) %>
+    <div class="form-group">
+      <%= f.label :private, class: 'col-md-4 checkbox' do %>
+        <%= f.check_box :private %>Private wiki
       <% end %>
     </div>
   <% end %>
 
   <div class="form-group">
-    <%= f.submit "Save", class: 'btn btn-primary', style: 'margin-left:40px;' %>
+    <%= f.submit "Save", class: 'btn btn-primary' %>
   </div>
 <% end %>

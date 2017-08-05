@@ -1,20 +1,20 @@
 
-<div style="width:900px; height:1200px;  margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
-<%= render "devise/shared/project_name"%>
- <%= render "devise/shared/loggedin" %>
-<ul class="nav navbar-nav pull-left">
+<!--<div style="width:900px; height:1200px;  margin-left:150px;background-color:black; border: 3px solid #191970; color:white"> -->
+
+<div class = "row">
+
 <% if current_user.standard? %>
   <h2>Standard User</h2>
 <% else %>
   <h2>Premium User</h2>
-<%end%>
-  
-<% if current_user.standard? %>
-  <%= link_to "upgrade_account_to_premium_by_paying", new_charge_path, style:'margin-left:40px', class: 'btn btn-primary btn-md' %>
 <% end %>
-
-<h4 style="margin-left:40px;">My Wikis</h4>
-<table style="margin-left:40px;width:90%">
+  
+<%= link_to "new wiki", new_wiki_path, class: 'btn btn-success new-wiki' %>
+<h4>My Wikis</h4>
+<% if current_user.standard? %>
+    <%= link_to "Click and Pay to become Premier User", new_charge_path, class: 'btn btn-primary btn-md' %>
+<% end %>
+<table>
   <tr>
     <th>Wiki(click wiki link below to edit) </th>
     <th>Wiki(click link to show) </th>
@@ -23,50 +23,57 @@
   <% @wikis.each do |wiki| %>
     <tr>
         <%# if policy(wiki).edit? %>
-          <td><%= link_to wiki.title, edit_wiki_path(wiki), {:style=>'color:white', class: 'btn btn-link btn-md'} %></td>
+          <td><%= link_to wiki.title, edit_wiki_path(wiki), style:'color:blue' %></td>
         <%# end %>
         <%# if policy(wiki).show? %>
-          <td><%= link_to "show", [wiki], method: :get, class: 'btn btn-primary btn-md' %></td>
+          <td><%= link_to "show", [wiki], method: :get, style:'color:green' %></td>
         <%# end %>
         <%# if policy(wiki).destroy? %>
-          <td><%= link_to "delete", [wiki], method: :delete, class: 'btn btn-warning btn-md' %></td>
+          <td><%= link_to "delete", [wiki], method: :delete , style:'color:red'%></td>
           
         <%#end %>
       </p>
     </tr>
   <% end %>
 </table>
-<h4 style="margin-left:40px; margin-top:20px;">Create New Wiki</h4> 
-    <%#= link_to "new wiki", new_wiki_path, method: :create,  class: 'btn btn-success' %>
+
+
+<!--<h4 style="margin-left:40px; margin-top:20px;">Create New Wiki</h4> -->
+    <%#= link_to "new wiki", new_wiki_path, class: 'btn btn-success new-wiki' %>
     <%#= link_to "new wiki", [@wiki], method: :new, class: 'btn btn-success'%>
     <%#= link_to "new wiki", (render partial: 'form', locals: {wiki: @wiki}),target: :_blank, class: 'btn btn-primary btn-lg' %>
 <%#= link_to "Create Wiki", class: 'btn btn-warning btn-md'%>
+
+<!--
 <div class="row">
   <div class="col-md-4">
-    <%= render partial: 'form', locals: {wiki: @wiki} %>
+    <%#= render partial: 'form', locals: {wiki: @wiki} %>
   </div>
 </div>
+-->
 
 <% if current_user.premium? %>
-  <div class="row">
-    <div class="col-md-4", style="margin-left:40px;">
+  <!--<div class="row">
+    <div class="col-md-4"> -->
       <p class="ex1">You are premium user! </p>
        If you downgrade your account, your private wikis will become public!!
        You want to do it? 
-    </div>
-  </div>
+   <!-- </div>
+  </div> -->
 
-  <div class="row">
-    <div class="col-md-4", style="width: auto;">
-      <%= link_to "Yes", wiki_downgrade_path(current_user), class: 'btn btn-primary', style:'margin-left:40px;' %>
-    </div>
-    <div class="col-md-4", style="width: auto">
-      <%= button_to "No", {:controller => "wikis", :action => "index"}, class: 'btn btn-primary', :method => :get %>
-    </div>
-  </div>
+  <!--<div class="row">
+    <div class="col-md-4", style="width: auto;"> -->
+       <%= link_to "Yes", wiki_downgrade_path(current_user), class: 'btn btn-primary' %> 
+       <%#= link_to "Yes", wiki_downgrade_path(current_user) %>
+      
+    <!--</div>
+    <div class="col-md-4", style="width: auto"> -->
+      <%#= button_to "No", {:controller => "wikis", :action => "index"}, class: 'btn btn-primary', :method => :get %>
+      <%= link_to "No", wikis_path(current_user), class:'btn btn-primary' %>
+   <!-- </div>
+  </div> -->
 
   <%#= link_to "down_grade_account", wiki_downgrade_path(current_user), class: 'btn btn-primary btn-md' %>
 <% end %>
-</ul>
 </div>
 

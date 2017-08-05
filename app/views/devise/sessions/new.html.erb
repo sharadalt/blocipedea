@@ -1,32 +1,28 @@
 
-<div style="width:600px; height:500px; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
-<%= render "devise/shared/project_name"%>
-<h2 style="margin-top:30px;">Sign In</h2>
+<div class = "row">
+  <div class = "col-md-8">
+<% header "Sign In" %>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
 <%= devise_error_messages! %>
 
   <div class="form-group">
-    <%= f.label :name, style:'margin-left:40px;' %>
-    <%= f.text_field :name, class: 'form-control', style:'margin-left:40px;width:500px' %>
+    <%= f.label :email %>
+    <%= f.email_field :email, class: 'form-control',placeholder: "Enter email "  %>
   </div>
 
   <div class="form-group">
-    <%= f.label :email, style:'margin-left:40px;' %>
-    <%= f.email_field :email, class: 'form-control', style:'margin-left:40px;width:500px' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password, style:'margin-left:40px;' %>
-    <%= f.password_field :password, autocomplete: "off", class: 'form-control', style:'margin-left:40px;width:500px' %>
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "off", class: 'form-control',placeholder: "Enter password " %>
     <% if @validatable %>
       <span class="help-block"><%= @minimum_password_length %> characters minimum</span>
     <% end %>
   </div>
 
-  <%= f.submit "Sign in", class: 'btn btn-primary', style:'margin-left:40px; margin-bottom:30px' %>
+  <%= f.submit "Sign in", class: 'btn btn-primary' %>
 <% end %>
 
 <%= render "devise/shared/links" %>
 </div>
+</div> 

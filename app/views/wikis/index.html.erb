@@ -1,6 +1,4 @@
 
-<!--<div style="width:900px; height:1200px;  margin-left:150px;background-color:black; border: 3px solid #191970; color:white"> -->
-
 <div class = "row">
 
 <% if current_user.standard? %>
@@ -37,42 +35,18 @@
   <% end %>
 </table>
 
-
-<!--<h4 style="margin-left:40px; margin-top:20px;">Create New Wiki</h4> -->
-    <%#= link_to "new wiki", new_wiki_path, class: 'btn btn-success new-wiki' %>
-    <%#= link_to "new wiki", [@wiki], method: :new, class: 'btn btn-success'%>
-    <%#= link_to "new wiki", (render partial: 'form', locals: {wiki: @wiki}),target: :_blank, class: 'btn btn-primary btn-lg' %>
-<%#= link_to "Create Wiki", class: 'btn btn-warning btn-md'%>
-
-<!--
-<div class="row">
-  <div class="col-md-4">
-    <%#= render partial: 'form', locals: {wiki: @wiki} %>
-  </div>
-</div>
--->
-
 <% if current_user.premium? %>
-  <!--<div class="row">
-    <div class="col-md-4"> -->
-      <p class="ex1">You are premium user! </p>
-       If you downgrade your account, your private wikis will become public!!
+ 
+  <p class="ex1">You are premium user! </p>
+  If you downgrade your account, your private wikis will become public!!
        You want to do it? 
-   <!-- </div>
-  </div> -->
-
-  <!--<div class="row">
-    <div class="col-md-4", style="width: auto;"> -->
-       <%= link_to "Yes", wiki_downgrade_path(current_user), class: 'btn btn-primary' %> 
-       <%#= link_to "Yes", wiki_downgrade_path(current_user) %>
+   
+  <%= link_to "Yes", wiki_downgrade_path(current_user), class: 'btn btn-primary' %> 
+  <%#= link_to "Yes", wiki_downgrade_path(current_user) %>
       
-    <!--</div>
-    <div class="col-md-4", style="width: auto"> -->
-      <%#= button_to "No", {:controller => "wikis", :action => "index"}, class: 'btn btn-primary', :method => :get %>
-      <%= link_to "No", wikis_path(current_user), class:'btn btn-primary' %>
-   <!-- </div>
-  </div> -->
-
+    
+  <%= link_to "No", wikis_path(current_user), class:'btn btn-primary' %>
+   
   <%#= link_to "down_grade_account", wiki_downgrade_path(current_user), class: 'btn btn-primary btn-md' %>
 <% end %>
 </div>

@@ -2,12 +2,12 @@ require 'random_data'
 
 User.destroy_all
 
-for i in 1..5
+for i in 1..2
   user = User.create!(
   name: "example#{i} last",
   email: "anamikaone#{i+4}@gmail.com",
-  password: "anamika123", 
-  password_confirmation: "anamika123"
+  password: "hello123", 
+  password_confirmation: "hello123"
   )
   #user.skip_confirmation!
   user.save

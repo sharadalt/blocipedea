@@ -34,8 +34,8 @@
          
          <% if (current_user.admin? || current_user.premium?) || current_user.collaborator_for(@wiki)%>
             <div class="form-group">
-               <%= f.label :private,class: 'checkbox' do %>
-                  <%= f.check_box :private %>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Private wiki
+               <%= f.label :private,class: 'col-md-4 checkbox' do %>
+                  <%= f.check_box :private %>Private wiki
                <% end %>
             </div>
          <% end %>

@@ -4,12 +4,12 @@ User.destroy_all
 
 for i in 1..5
   user = User.create!(
-  name: "user#{i}",
-  email: "user#{i}@example.com",
-  password: "hello123", 
-  password_confirmation: "hello123"
+  name: "example#{i} last",
+  email: "anamikaone#{i+4}@gmail.com",
+  password: "anamika123", 
+  password_confirmation: "anamika123"
   )
-  user.skip_confirmation!
+  #user.skip_confirmation!
   user.save
 end
 

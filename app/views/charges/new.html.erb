@@ -1,7 +1,12 @@
- <div style="width:600px; height:650px; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">
-   <%= render "devise/shared/project_name"%>
-   <h2 style="margin-left:40px;">Payment page</h2>
-   <%= form_tag charges_path, style:'margin-left:40px;' do %>
-     <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount=<%= @stripe_btn_data[:amount] %> data-description="<%= @stripe_btn_data[:description] %>" ></script>
+ 
+   <% header "Payment page" %>
+   <%= form_tag charges_path do %>
+     
+     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="A month's subscription"
+          data-amount="500"
+          data-locale="auto"></script>
+     
    <% end %>
- </div>
+ 

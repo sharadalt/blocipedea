@@ -20,3 +20,5 @@
 /config/application.yml
 
 /config/initializers/stripe.rb
+
+/db/seeds.rb

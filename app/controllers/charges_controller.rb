@@ -5,7 +5,7 @@ class ChargesController < ApplicationController
     # with the charge
     customer = Stripe::Customer.create(
       email: params[:stripeEmail],
-      card: params[:stripeToken]
+      source: params[:stripeToken]
     )
  
     # Where the real magic happens

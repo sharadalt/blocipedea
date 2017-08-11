@@ -84,7 +84,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
   :user_name => Figaro.env.user_name,
   :password => Figaro.env.password,
-  :domain => 'example.com',
+  :domain => 'heroku.com',
   :address => 'smtp.gmail.com',
   :port => 587,
   :authentication => :plain,

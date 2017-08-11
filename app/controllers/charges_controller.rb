@@ -1,17 +1,23 @@
 class ChargesController < ApplicationController
   
+  class Amount
+    @@amount = 5_00
+    def self.default
+      @@amount
+    end
+  end
   def create
     # Creates a Stripe Customer object, for associating
     # with the charge
     customer = Stripe::Customer.create(
       email: params[:stripeEmail],
-      source: params[:stripeToken]
+      card: params[:stripeToken]
     )
  
     # Where the real magic happens
     charge = Stripe::Charge.create(
       customer: customer.id, # Note -- this is NOT the user_id in your app
-      amount: params[:amount],
+      amount: Amount.default,
       description: "Wikis Premium Membership - #{current_user.email}",
       currency: 'usd'
     )
@@ -31,10 +37,10 @@ class ChargesController < ApplicationController
   end
 
   def new
-   # @stripe_btn_data = {
-     # key: "#{ Rails.configuration.stripe[:publishable_key] }",
-     # description: "Wikis Premium Membership - #{current_user.name}",
-     # amount: Amount.default
-   # }
+    @stripe_btn_data = {
+      key: "#{ Rails.configuration.stripe[:publishable_key] }",
+      description: "Wikis Premium Membership - #{current_user.name}",
+      amount: params[:amount]
+    }
   end
 end

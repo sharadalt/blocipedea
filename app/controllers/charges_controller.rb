@@ -38,7 +38,7 @@ class ChargesController < ApplicationController
 
   def new
     @stripe_btn_data = {
-      key: "#{ Rails.configuration.stripe[:publishable_key] }",
+      key: "#{ Rails.configuration.initializers.stripe[:publishable_key] }",
       description: "Wikis Premium Membership - #{current_user.name}",
       amount: params[:amount]
     }

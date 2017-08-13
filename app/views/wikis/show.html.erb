@@ -2,8 +2,12 @@
 
 <div class = "row" >
 <h2>Wiki Show</h2>
+<br><br>
+<p style="font-weight:bold">Wiki Title</p>
 <%= markdown(@wiki.title)%>
+<p style="font-weight:bold">Wiki Body</p>
 <%= markdown(@wiki.body)  %>
+ <%= link_to 'exit_show_mode', wikis_path, class: 'btn btn-primary' %>
 </div>
 
 <!--</div> -->

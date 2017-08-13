@@ -1,53 +1,11 @@
 
-<!--<div style="width:90%; height:1200px; margin-left:150px;background-color:black; border: 3px solid #191970; color:white">-->
-
 <%# raise @wiki.inspect %>
 <div class = "row">
 <% if @wiki.private? %>
+  <%= render partial: 'collaborators/collaborator', locals: { wiki: @wiki } %>
   <h2>Edit Private wiki</h2>
 <% else %>
-  <h2>Edit Public wiki</h2>
+  <% header "Edit Public wiki" %>
 <%end%>
-
-      <%= form_for [@user,@wiki] do |f| %>
-         <% if @wiki.errors.any? %>
-            <div class="alert alert-danger">
-               <h4><%= pluralize(wiki.errors.count, "error") %>.</h4>
-               <ul>
-                  <% wiki.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
-                  <% end %>
-               </ul>
-            </div>
-         <% end %>
-         <%= form_group_tag(@wiki.errors[:title]) do %>
-           <%= f.label :title %>
-           <%= f.text_field :title,size: 15, class: 'form-control', placeholder: "Enter wiki title" %>
-         <% end %>
-         <%= form_group_tag(@wiki.errors[:description]) do %>
-            <%= f.label :body %>
-            <%= f.text_area :body, style:'height:500px;',  class: 'form-control', placeholder: "Enter wiki body" %>
-         <% end %>
-         <div >
-           <p> <%= markdown(@wiki.body) %> </p> 
-         </div>
-         
-         <% if (current_user.admin? || current_user.premium?) || current_user.collaborator_for(@wiki)%>
-            <div class="form-group">
-               <%= f.label :private,class: 'col-md-4 checkbox' do %>
-                  <%= f.check_box :private %>Private wiki
-               <% end %>
-            </div>
-         <% end %>
-         
-         <%#= raise (@wiki.inspect) %>
-
-        <div class="form-group">
-           <%= f.submit "Save", class: 'btn btn-primary' %>
-        </div>
-      <% end %>
-      <% if (current_user.admin? || current_user.premium? && @wiki.private) %>
-        <%= render partial: 'collaborators/collaborator', locals: { wiki: @wiki } %>
-      <% end %>
+<%= render partial: 'form', locals: {todo: @todo,user:@user} %>
 </div>
-<!-- </div> -->

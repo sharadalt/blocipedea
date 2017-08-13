@@ -17,9 +17,11 @@
   <%= form_group_tag(@wiki.errors[:description]) do %>
     <%= f.label :body %>
     <%#= f.text_area :body, style:'width:400px;height:100px;', class: 'form-control', placeholder: "Enter wiki body" %>
-<%= f.text_area :body, style:'height:300px;', data: {provide: "markdown"}, class: 'form-control', placeholder: "Enter wiki body" %>
+    <%= f.text_area :body, style:'height:300px;', data: {provide: "markdown"}, class: 'form-control', placeholder: "Enter wiki body" %>
   <% end %>
-  </p>
+  <div>
+    <%= markdown(@wiki.body) %> 
+  </div>
   <% if current_user.admin? || current_user.premium? || current_user.collaborator_for(@wiki) %>
     <div class="form-group">
       <%= f.label :private, class: 'col-md-4 checkbox' do %>
@@ -27,7 +29,6 @@
       <% end %>
     </div>
   <% end %>
-
   <div class="form-group">
     <%= f.submit "Save", class: 'btn btn-primary' %>
   </div>

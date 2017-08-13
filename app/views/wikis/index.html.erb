@@ -7,11 +7,13 @@
   <h2>Premium User</h2>
 <% end %>
   
-<%= link_to "new wiki", new_wiki_path, class: 'btn btn-success new-wiki' %>
-<h4>My Wikis</h4>
 <% if current_user.standard? %>
     <%= link_to "Click and Pay to become Premier User", new_charge_path, class: 'btn btn-primary btn-md' %>
 <% end %>
+
+<h4>My Wikis</h4>
+
+<%= link_to "new wiki", new_wiki_path, class: 'btn btn-success new-wiki' %>
 <table>
   <tr>
     <th>Wiki(click wiki link below to edit) </th>
@@ -34,20 +36,10 @@
     </tr>
   <% end %>
 </table>
-
+<br>
 <% if current_user.premium? %>
- 
-  <p class="ex1">You are premium user! </p>
-  If you downgrade your account, your private wikis will become public!!
-       You want to do it? 
-   
-  <%= link_to "Yes", wiki_downgrade_path(current_user), class: 'btn btn-primary' %> 
-  <%#= link_to "Yes", wiki_downgrade_path(current_user) %>
-      
-    
-  <%= link_to "No", wikis_path(current_user), class:'btn btn-primary' %>
-   
-  <%#= link_to "down_grade_account", wiki_downgrade_path(current_user), class: 'btn btn-primary btn-md' %>
+  <%= link_to "Downgrade to become standard user, making private wikis as public ", wiki_downgrade_path(current_user), class: 'btn btn-primary btn-md' %>
 <% end %>
+
 </div>
 

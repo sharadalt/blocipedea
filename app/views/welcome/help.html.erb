@@ -1,1 +1,49 @@
-<p>Hello</p>
+<p>Once you are registered at Micropedia, You can create free Markdown wikis using Micropedia. 
+You can pay minimal money and have your own private wikis/documents and collaborate with colleagues. 
+Bocipedia provides wiki CRUD operations as well.</p>
+<p>
+Micropedia is built in Ruby on Rails framework with MVC architecture. It uses html , CSS and bootstrap-sass
+to stylize. It uses ruby gems to achieve some of it’s tasks. It uses postgresql on heroku for it’s database
+needs.
+</p>
+<p>
+The welcoming ‘welcome page’ of Micropedia welcomes us. 
+Like in any web application, you need to register first in order to use Micropedia. Provide your name, email 
+and password and click the Signup button, in the signup page.
+</p>
+<p>
+At Micropedia, when you signup, you get a confirmation email and instructions to signin. Once instructions
+followed, you are a registered user.Once registered, You want to signin into Micropedia using SignIn page.
+</p>
+
+<p>
+If you forget the password, You can recover it. Once signed, You can get started with Micropedia.
+</p>
+
+<p>
+Not only you can create public wikis but also can edit, show and delete your own creation. According to 
+Micropedia roles, Now you are a ‘standard user’. 
+</p>
+
+<p>
+Using the new wiki page, you can create a wiki. Please note for a premium user, there will be an option to make 
+the wiki private. This option will not be there for a standard user.
+</p>
+<p>
+Note: When you become a premium user, you have the option to make any public wiki to private by clicking the 
+checkbox. The standard users will not have that option.
+</p>
+<p>
+If you just want to have a look at your wiki, clicking that show button will do the trick.
+If you wish to have own private wikis, just click on the button which says, upgrade account to 
+premium by paying in standard user page. 
+Micropedia has used services of stripe for payment processing.
+Now after paying, You become a ‘premium user’. That is the role, Micropedia assigns you.
+</p>
+<p>
+There is one more role called ‘admin’ in Micropedia. This roles is implemented using ‘Pundit’ gem. 
+Premium users like you and admin users are able to create new private wikis and make public wikis private. 
+You can edit a wiki with Markdown syntax. You can add and remove collaborators for your private wikis. 
+The private wiki edit page has option to add collaborators. 
+Important note, If you decide to go back to standard user role,  At the bottom of premier user screen select to become one. That is it.
+</p>

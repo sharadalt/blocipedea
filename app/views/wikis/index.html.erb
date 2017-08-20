@@ -37,7 +37,7 @@
 </table>
 <br>
 <% if current_user.premium? %>
-  <%= link_to "Downgrade to become standard user, making private wikis as public ", wiki_downgrade_path(current_user), class: 'btn btn-primary btn-md' %>
+  <%= link_to "Downgrade to become standard user", wiki_downgrade_path(current_user), class: 'btn btn-primary btn-md' %>
 <% end %>
 
 </div>

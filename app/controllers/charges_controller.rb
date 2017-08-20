@@ -40,11 +40,11 @@ class ChargesController < ApplicationController
   end
   
   def index
-    @charges = Charge.all
+    #@charges = Charge.all
   end
 
   def new
-  @charge = Charge.new
+    #@charge = Charge.new
     #@stripe_btn_data = {
      # key: "#{ Rails.configuration.stripe[:publishable_key] }",
      # description: "Wikis Premium Membership - #{current_user.name}",

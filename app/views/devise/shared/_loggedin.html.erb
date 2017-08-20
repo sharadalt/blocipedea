@@ -2,10 +2,9 @@
   <% if user_signed_in? %>
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown", href="#">
-        <div class="bold_letter", style:'color:white;font-weight:bold;margin-left:40px;'>
-          <%= current_user.name %>
+        <div class="bold_letter", style="color:white;font-weight:bold;">
+          <%= current_user.name %><span class="caret"></span>
         </div>
-        <span class="caret"></span>
       </a>
       <ul class="dropdown-menu" role="menu">
         <%= link_to 'Signout', destroy_user_session_path, method: :delete %>

@@ -265,6 +265,7 @@ DEPENDENCIES
   hirb
   jquery-rails
   pg
+  prawn
   pry-rails
   pundit
   rails (= 4.2.4)

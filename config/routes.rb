@@ -23,8 +23,10 @@ Rails.application.routes.draw do
   
   resources :users do
     resources :wikis do
+    end
   end
-end
+
+  resources :charges 
 
   
   #devise_for :users, controllers: { registrations: "registrations" }
